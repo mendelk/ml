@@ -27,11 +27,17 @@ sigma = zeros(1, size(X, 2));
 %       
 
 
+for iter = 1:length(mu)
 
+  local_mu = mean(X_norm(:,iter));
+  local_sigma = std(X_norm(:,iter)); % or range...
 
+  X_norm(:,iter) = ( X_norm(:,iter) .- local_mu' ) / local_sigma;
 
+  mu(iter) = local_mu;
+  sigma(iter) = local_sigma;
 
-
+end
 
 
 % ============================================================
